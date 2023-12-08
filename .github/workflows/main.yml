@@ -33,6 +33,7 @@ jobs:
             sudo yum update -y
             sudo yum install docker -y
             sudo systemctl start docker
-            cd home          
+            cd home     
+            sudo docker login -u="bosunolapo" -p=${{ secrets.DOCKER_PASS }} docker.io
             sudo docker build --tag=olafirstdockerimage .
             sudo docker run cloudappcontainer -p 80:80 -d olafirstdockerimage
