@@ -34,5 +34,5 @@ jobs:
             sudo yum install docker -y
             sudo systemctl start docker
             cd home          
-            sudo docker build -t myfirstdockerimage .
+            sudo docker build --tag=myfirstdockerimage:v0 .
             sudo docker run cloudappcontainer -p 80:80 -d myfirstdockerimage
