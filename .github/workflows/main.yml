@@ -30,9 +30,15 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            sudo apt-get -y update
-            sudo apt-get install -y apache2
-            sudo systemctl start apache2
-            sudo systemctl enable apache2
-            cd home
-            sudo mv * /var/www/html
+            sudo mkdir lab
+            sudo mkdir lab/cloudapplab4
+            sudo mv index.html lab/cloudapplab4
+            sudo mv README.md lab/cloudapplab4
+            cd lab
+            sudo yum update -y
+            sudo yum install docker -y
+            sudo systemctl start docker
+            sudo echo -e "FROM httpd:2.4\nCOPY ./cloudapplab4/ /usr/local/apache2/htdocs"
+            sudo docker build -t cloudapplab4-image
+            sudo docker push Bosunolapo/cloudapplab4-image:version1.0
+            sudo docker run --name cloudapplab4-container -p 80:80 -d Bosunolapo/cloudapplab4-image:version1.0
