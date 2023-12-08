@@ -36,4 +36,4 @@ jobs:
             sudo systemctl start docker
             cd home          
             sudo docker build -t myfirstdockerimage:v0 .
-            sudo docker run -d --name cloudappcontainer -p 80:80 myfirstdockerimage:v0
+            sudo docker run cloudappcontainer -p 80:80 -d myfirstdockerimage:v0
