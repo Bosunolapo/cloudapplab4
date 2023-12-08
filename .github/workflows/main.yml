@@ -33,6 +33,6 @@ jobs:
             sudo apt-get update -y
             sudo apt-get install docker -y
             sudo systemctl start docker
-            cd home
-            sudo docker build -t cloudapp .
-            sudo docker run --name cloudappcontainer -p 80:80 -d cloudapp
+            cd home          
+            sudo docker build --tag=myfirstdockerimage:v0 .
+            sudo docker run --detach --name=cloudappcpntainer --restart=always --publish=80:80 myfirstdockerimage:v0
