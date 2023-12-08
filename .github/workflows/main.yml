@@ -29,16 +29,10 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            sudo mkdir lab
-            sudo mkdir lab/cloudapplab4
-            sudo mv index.html lab/cloudapplab4
-            sudo mv README.md lab/cloudapplab4
-            cd lab
+          script:
             sudo yum update -y
             sudo yum install docker -y
             sudo systemctl start docker
-            sudo echo -e "FROM httpd:2.4\nCOPY ./cloudapplab4/ /usr/local/apache2/htdocs"
-            sudo docker build -t cloudapplab4-image
-            sudo docker push Bosunolapo/cloudapplab4-image:version1.0
-            sudo docker run --name cloudapplab4-container -p 80:80 -d Bosunolapo/cloudapplab4-image:version1.0
+            cd home
+            sudo docker build -t cloudapp .
+            sudo docker run --name cloudapp -p 80:80 -d latest
