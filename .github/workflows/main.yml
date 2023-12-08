@@ -35,4 +35,4 @@ jobs:
             sudo systemctl start docker
             cd home          
             sudo docker build --tag=olafirstdockerimage .
-            sudo docker run --name cloudappcontainer -p 80:80 -d olafirstdockerimage
+            sudo docker run cloudappcontainer -p 80:80 -d olafirstdockerimage
