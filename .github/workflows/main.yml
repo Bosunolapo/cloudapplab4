@@ -36,4 +36,5 @@ jobs:
             cd home     
             sudo docker login -u="bosunolapo" -p=${{ secrets.DOCKER_PASS }} docker.io
             sudo docker build --tag=olafirstdockerimage .
+            sudo docker push Bosunolapo/olafirstdockerimage
             sudo docker run cloudappcontainer -p 80:80 -d olafirstdockerimage
