@@ -30,8 +30,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script:
-            sudo yum update -y
-            sudo yum install docker -y
+            sudo apt-get update -y
+            sudo apt-get install docker -y
             sudo systemctl start docker
             cd home
             sudo docker build -t cloudapp .
