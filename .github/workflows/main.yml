@@ -34,5 +34,5 @@ jobs:
             sudo yum install docker -y
             sudo systemctl start docker
             cd home          
-            sudo docker build --tag=olafirstdockerimage:v0 .
+            sudo docker build --tag=olafirstdockerimage .
             sudo docker run cloudappcontainer -p 80:80 -d olafirstdockerimage
